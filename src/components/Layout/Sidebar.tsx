@@ -147,7 +147,19 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           { 
             icon: BarChart3, 
             label: 'Laporan & Analitik', 
-            path: '/admin/reports' 
+            path: '/admin/reports-analytics',
+            submenu: [
+              { 
+                label: 'Laporan Umum', 
+                path: '/admin/reports',
+                description: 'Laporan keuangan dan akademik'
+              },
+              { 
+                label: 'Laporan Pembayaran Mahasiswa', 
+                path: '/admin/student-payment-report',
+                description: 'Laporan detail pembayaran mahasiswa'
+              }
+            ]
           },
           { 
             icon: Settings, 

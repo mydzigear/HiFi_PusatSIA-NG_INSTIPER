@@ -27,6 +27,7 @@ import { UserManagement } from './pages/admin/UserManagement';
 import { PaymentSettings } from './pages/admin/PaymentSettings';
 import { BillingEngine } from './pages/admin/BillingEngine';
 import { Reports } from './pages/admin/Reports';
+import { StudentPaymentReport } from './pages/admin/StudentPaymentReport';
 
 // New Admin Pages
 import { StudyProgramManagement } from './pages/admin/StudyProgramManagement';
@@ -238,6 +239,13 @@ function AppRoutes() {
         <ProtectedRoute>
           <DashboardLayout>
             <Reports />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/student-payment-report" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <StudentPaymentReport />
           </DashboardLayout>
         </ProtectedRoute>
       } />
