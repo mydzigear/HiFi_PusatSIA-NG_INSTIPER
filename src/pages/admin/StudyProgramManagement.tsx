@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Search, Edit, Trash2, BookOpen, Filter, Download, Upload, Building } from 'lucide-react';
 import { StudyProgram, Faculty } from '../../types/admin';
 
@@ -73,13 +73,6 @@ export function StudyProgramManagement() {
     pddiktiUuid: ''
   });
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('id-ID', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  };
 
   const getStatusColor = (status: boolean) => {
     return status ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800';

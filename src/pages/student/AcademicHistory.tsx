@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GraduationCap, Download, TrendingUp, Award, BookOpen, Calendar } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Student } from '../../types';
@@ -26,7 +26,7 @@ export function AcademicHistory() {
         gpa: 3.75,
         credits: 20,
         grades: [
-          { courseCode: 'AGR101', courseName: 'Pengantar Ilmu Pertanian', credits: 3, grade: 'A', gradePoint: 4.0 },
+          { courseCode: 'AGR101', courseName: 'Pengantar Ilmu Pertanian', credits: 3, grade: 'A', gradePoint: 4.0, semester: '2023-1' } as Grade,
           { courseCode: 'BIO101', courseName: 'Biologi Umum', credits: 3, grade: 'A-', gradePoint: 3.7 },
           { courseCode: 'KIM101', courseName: 'Kimia Dasar', credits: 3, grade: 'B+', gradePoint: 3.3 },
           { courseCode: 'MAT101', courseName: 'Matematika Dasar', credits: 3, grade: 'B', gradePoint: 3.0 },

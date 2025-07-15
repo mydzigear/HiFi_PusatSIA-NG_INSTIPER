@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Search, Edit, Trash2, BookOpen, Users, Calendar, Filter, Download, Upload } from 'lucide-react';
 import { Course, StudyProgram } from '../../types/admin';
 
@@ -68,14 +68,6 @@ export function CourseManagement() {
     isActive: true,
     description: ''
   });
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('id-ID', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  };
 
   const getStatusColor = (status: boolean) => {
     return status ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800';

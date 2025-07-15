@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { FileText, CreditCard, CheckCircle, Clock, AlertCircle, User, Upload, Calendar } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -81,7 +81,7 @@ export function AdmissionDashboard() {
         <h2 className="text-xl font-bold text-gray-900 mb-6">Langkah Pendaftaran</h2>
         
         <div className="space-y-4">
-          {steps.map((step, index) => {
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div key={step.id} className="flex items-center">

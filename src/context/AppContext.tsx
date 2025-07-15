@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { Course, Invoice, Notification, AcademicPeriod } from '../types';
 
 interface AppContextType {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, Edit, Trash2, Calendar, Filter, Download, Upload, Eye, MapPin, Clock, User, Sparkles, TrendingUp, Users } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Edit, Trash2, Calendar, Filter, Download, Upload, Eye, MapPin, Clock, User, TrendingUp, Users } from 'lucide-react';
 import { Agenda } from '../../types';
 
 export function AgendaManagement() {

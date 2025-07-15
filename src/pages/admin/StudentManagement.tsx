@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Search, Edit, Trash2, Users, Filter, Download, Upload, Eye, Key } from 'lucide-react';
 import { StudentData, StudyProgram, Specialization, EntryPath } from '../../types/admin';
 
@@ -77,13 +77,6 @@ export function StudentManagement() {
     password: ''
   });
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('id-ID', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  };
 
   const getStatusColor = (status: string) => {
     switch (status) {

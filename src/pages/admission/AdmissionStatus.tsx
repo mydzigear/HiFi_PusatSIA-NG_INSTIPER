@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CheckCircle, Clock, AlertCircle, FileText, CreditCard, User, Download, Calendar, Award } from 'lucide-react';
+import { useState } from 'react';
+import { CheckCircle, Clock, AlertCircle, FileText, User, Download, Calendar, Award } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Applicant } from '../../types';
 
@@ -100,18 +100,6 @@ export function AdmissionStatus() {
     }
   ];
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
-      case 'current':
-        return <Clock className="w-5 h-5 text-orange-500" />;
-      case 'pending':
-        return <Clock className="w-5 h-5 text-gray-400" />;
-      default:
-        return <Clock className="w-5 h-5 text-gray-400" />;
-    }
-  };
 
   const getStatusColor = (status: string) => {
     switch (status) {

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Plus, Search, Edit, Trash2, Settings, CreditCard, FileText, User, Mail } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Edit, Trash2, Settings, CreditCard, FileText, User, Mail, Upload } from 'lucide-react';
+import { DynamicFormModal } from '../../components/admin/DynamicFormModal';
 
 interface PaymentType {
   id: string;
@@ -31,15 +32,18 @@ interface Signatory {
 export function PaymentSettings() {
   const [activeTab, setActiveTab] = useState<'types' | 'components' | 'signatories' | 'notifications'>('types');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<'types' | 'components' | 'signatories' | 'notifications'>('types');
+  const [editingItem, setEditingItem] = useState<any>(null);
 
-  // Mock data
+  // Mock data with proper validation
   const paymentTypes: PaymentType[] = [
     {
       id: '1',
       code: 'UKT',
       name: 'Uang Kuliah Tunggal',
       description: 'Biaya kuliah per semester',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     },
     {
@@ -47,7 +51,7 @@ export function PaymentSettings() {
       code: 'HERREG',
       name: 'Herregistrasi',
       description: 'Biaya daftar ulang semester',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     },
     {
@@ -55,10 +59,10 @@ export function PaymentSettings() {
       code: 'DAFTAR',
       name: 'Pendaftaran',
       description: 'Biaya pendaftaran mahasiswa baru',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     }
-  ];
+  ].filter(Boolean); // Remove any null/undefined values
 
   const costComponents: CostComponent[] = [
     {
@@ -66,7 +70,7 @@ export function PaymentSettings() {
       code: 'PENGEMBANGAN',
       name: 'Biaya Pengembangan',
       description: 'Biaya untuk pengembangan fasilitas kampus',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     },
     {
@@ -74,7 +78,7 @@ export function PaymentSettings() {
       code: 'SKS',
       name: 'Biaya SKS',
       description: 'Biaya per satuan kredit semester',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     },
     {
@@ -82,10 +86,10 @@ export function PaymentSettings() {
       code: 'PRAKTIKUM',
       name: 'Biaya Praktikum',
       description: 'Biaya kegiatan praktikum laboratorium',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     }
-  ];
+  ].filter(Boolean); // Remove any null/undefined values
 
   const signatories: Signatory[] = [
     {
@@ -93,7 +97,7 @@ export function PaymentSettings() {
       name: 'Dr. Budi Santoso, M.Si.',
       position: 'Rektor',
       signature: '/signatures/rektor.png',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     },
     {
@@ -101,10 +105,10 @@ export function PaymentSettings() {
       name: 'Dra. Siti Aminah, M.M.',
       position: 'Wakil Rektor Bidang Keuangan',
       signature: '/signatures/warek.png',
-      status: 'active',
+      status: 'active' as const,
       createdAt: '2024-01-15'
     }
-  ];
+  ].filter(Boolean); // Remove any null/undefined values
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('id-ID', {
@@ -119,6 +123,115 @@ export function PaymentSettings() {
       ? 'bg-green-100 text-green-800' 
       : 'bg-gray-100 text-gray-800';
   };
+
+  const openModal = (type: typeof modalType, item?: any) => {
+    setModalType(type);
+    setEditingItem(item || null);
+    setIsModalOpen(true);
+  };
+
+  const handleSave = (data: any) => {
+    console.log('Saving data:', data);
+    // Implementation would save to backend
+  };
+
+  const getFormFields = () => {
+    const baseFields = [];
+    
+    switch (modalType) {
+      case 'types':
+        baseFields.push(
+          { name: 'code', label: 'Kode', type: 'text' as const, required: true, placeholder: 'Masukkan kode' },
+          { name: 'name', label: 'Nama', type: 'text' as const, required: true, placeholder: 'Masukkan nama' },
+          { name: 'description', label: 'Deskripsi', type: 'textarea' as const, placeholder: 'Masukkan deskripsi' },
+          { 
+            name: 'status', 
+            label: 'Status', 
+            type: 'select' as const, 
+            required: true,
+            options: [
+              { value: 'active', label: 'Aktif' },
+              { value: 'inactive', label: 'Nonaktif' }
+            ]
+          }
+        );
+        break;
+      case 'components':
+        baseFields.push(
+          { name: 'code', label: 'Kode', type: 'text' as const, required: true, placeholder: 'Masukkan kode' },
+          { name: 'name', label: 'Nama', type: 'text' as const, required: true, placeholder: 'Masukkan nama' },
+          { name: 'description', label: 'Deskripsi', type: 'textarea' as const, placeholder: 'Masukkan deskripsi' },
+          { 
+            name: 'status', 
+            label: 'Status', 
+            type: 'select' as const, 
+            required: true,
+            options: [
+              { value: 'active', label: 'Aktif' },
+              { value: 'inactive', label: 'Nonaktif' }
+            ]
+          }
+        );
+        break;
+      case 'signatories':
+        baseFields.push(
+          { name: 'name', label: 'Nama', type: 'text' as const, required: true, placeholder: 'Masukkan nama lengkap' },
+          { name: 'position', label: 'Jabatan', type: 'text' as const, required: true, placeholder: 'Masukkan jabatan' },
+          { 
+            name: 'status', 
+            label: 'Status', 
+            type: 'select' as const, 
+            required: true,
+            options: [
+              { value: 'active', label: 'Aktif' },
+              { value: 'inactive', label: 'Nonaktif' }
+            ]
+          }
+        );
+        break;
+      default:
+        break;
+    }
+
+    // Filter out any null/undefined fields and ensure all fields have required properties
+    return baseFields.filter(field => field && field.name && field.label && field.type);
+  };
+
+  const getModalTitle = () => {
+    const isEdit = editingItem !== null;
+    switch (modalType) {
+      case 'types':
+        return isEdit ? 'Edit Jenis Pembayaran' : 'Tambah Jenis Pembayaran';
+      case 'components':
+        return isEdit ? 'Edit Komponen Biaya' : 'Tambah Komponen Biaya';
+      case 'signatories':
+        return isEdit ? 'Edit Penandatangan' : 'Tambah Penandatangan';
+      default:
+        return 'Form';
+    }
+  };
+
+  // Filter functions with null checks
+  const filteredPaymentTypes = paymentTypes.filter(type => 
+    type && type.name && type.code && (
+      type.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      type.code.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const filteredCostComponents = costComponents.filter(component => 
+    component && component.name && component.code && (
+      component.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      component.code.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const filteredSignatories = signatories.filter(signatory => 
+    signatory && signatory.name && (
+      signatory.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      signatory.position.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -193,10 +306,19 @@ export function PaymentSettings() {
                 />
               </div>
             </div>
-            <button className="btn-primary flex items-center gap-2">
-              <Plus className="w-4 h-4" />
-              Tambah Jenis Pembayaran
-            </button>
+            <div className="flex gap-2">
+              <button className="btn-outline flex items-center gap-2">
+                <Upload className="w-4 h-4" />
+                Import
+              </button>
+              <button 
+                onClick={() => openModal('types')}
+                className="btn-primary flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Tambah Jenis Pembayaran
+              </button>
+            </div>
           </div>
 
           {/* Payment Types Table */}
@@ -214,7 +336,7 @@ export function PaymentSettings() {
                   </tr>
                 </thead>
                 <tbody>
-                  {paymentTypes.map((type) => (
+                  {filteredPaymentTypes.map((type) => (
                     <tr key={type.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="py-3 px-4">
                         <span className="font-mono text-sm font-medium text-gray-900">
@@ -236,14 +358,17 @@ export function PaymentSettings() {
                         <span className="text-gray-600">{formatDate(type.createdAt)}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="flex items-center gap-2">
-                          <button className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg">
-                            <Edit className="w-4 h-4" />
-                          </button>
-                          <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                         <div className="flex items-center gap-2">
+                           <button 
+                             onClick={() => openModal('types', type)}
+                             className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg"
+                           >
+                             <Edit className="w-4 h-4" />
+                           </button>
+                           <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
+                             <Trash2 className="w-4 h-4" />
+                           </button>
+                         </div>
                       </td>
                     </tr>
                   ))}
@@ -270,10 +395,19 @@ export function PaymentSettings() {
                 />
               </div>
             </div>
-            <button className="btn-primary flex items-center gap-2">
-              <Plus className="w-4 h-4" />
-              Tambah Komponen Biaya
-            </button>
+            <div className="flex gap-2">
+              <button className="btn-outline flex items-center gap-2">
+                <Upload className="w-4 h-4" />
+                Import
+              </button>
+              <button 
+                onClick={() => openModal('components')}
+                className="btn-primary flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Tambah Komponen Biaya
+              </button>
+            </div>
           </div>
 
           {/* Cost Components Table */}
@@ -291,7 +425,7 @@ export function PaymentSettings() {
                   </tr>
                 </thead>
                 <tbody>
-                  {costComponents.map((component) => (
+                  {filteredCostComponents.map((component) => (
                     <tr key={component.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="py-3 px-4">
                         <span className="font-mono text-sm font-medium text-gray-900">
@@ -313,14 +447,17 @@ export function PaymentSettings() {
                         <span className="text-gray-600">{formatDate(component.createdAt)}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="flex items-center gap-2">
-                          <button className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg">
-                            <Edit className="w-4 h-4" />
-                          </button>
-                          <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                         <div className="flex items-center gap-2">
+                           <button 
+                             onClick={() => openModal('components', component)}
+                             className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg"
+                           >
+                             <Edit className="w-4 h-4" />
+                           </button>
+                           <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
+                             <Trash2 className="w-4 h-4" />
+                           </button>
+                         </div>
                       </td>
                     </tr>
                   ))}
@@ -347,10 +484,19 @@ export function PaymentSettings() {
                 />
               </div>
             </div>
-            <button className="btn-primary flex items-center gap-2">
-              <Plus className="w-4 h-4" />
-              Tambah Penandatangan
-            </button>
+            <div className="flex gap-2">
+              <button className="btn-outline flex items-center gap-2">
+                <Upload className="w-4 h-4" />
+                Import
+              </button>
+              <button 
+                onClick={() => openModal('signatories')}
+                className="btn-primary flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Tambah Penandatangan
+              </button>
+            </div>
           </div>
 
           {/* Signatories Table */}
@@ -368,7 +514,7 @@ export function PaymentSettings() {
                   </tr>
                 </thead>
                 <tbody>
-                  {signatories.map((signatory) => (
+                  {filteredSignatories.map((signatory) => (
                     <tr key={signatory.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
@@ -395,14 +541,17 @@ export function PaymentSettings() {
                         <span className="text-gray-600">{formatDate(signatory.createdAt)}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="flex items-center gap-2">
-                          <button className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg">
-                            <Edit className="w-4 h-4" />
-                          </button>
-                          <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                         <div className="flex items-center gap-2">
+                           <button 
+                             onClick={() => openModal('signatories', signatory)}
+                             className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg"
+                           >
+                             <Edit className="w-4 h-4" />
+                           </button>
+                           <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
+                             <Trash2 className="w-4 h-4" />
+                           </button>
+                         </div>
                       </td>
                     </tr>
                   ))}
@@ -544,6 +693,17 @@ export function PaymentSettings() {
           </div>
         </div>
       )}
+
+      {/* Dynamic Form Modal */}
+      <DynamicFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleSave}
+        title={getModalTitle()}
+        fields={getFormFields()}
+        initialData={editingItem}
+        isEdit={editingItem !== null}
+      />
     </div>
   );
 }

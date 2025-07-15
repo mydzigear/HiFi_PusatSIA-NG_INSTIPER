@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, UserPlus, Sparkles, HelpCircle, CheckCircle, AlertCircle, Leaf, Sprout } from 'lucide-react';
+import { Eye, EyeOff, UserPlus, HelpCircle, CheckCircle, AlertCircle, Sprout } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ParticleBackground } from '../components/ParticleBackground';

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CreditCard, Copy, Download, CheckCircle, Clock, AlertCircle, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { Copy, Download, CheckCircle, Clock, AlertCircle, RefreshCw } from 'lucide-react';
 
 export function AdmissionPayment() {
   const [paymentStatus, setPaymentStatus] = useState<'pending' | 'paid' | 'expired'>('pending');

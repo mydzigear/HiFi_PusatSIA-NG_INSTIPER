@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowLeft, ArrowRight, Upload, Check, User, GraduationCap, Users, MapPin, FileText, Sparkles, Calendar, Phone, Mail, Home } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowLeft, ArrowRight, Check, User, GraduationCap, Users, MapPin, Sparkles, Calendar, Phone, Mail, Home } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 interface FormData {
@@ -74,9 +74,6 @@ export function AdmissionForm() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleFileChange = (field: keyof FormData, file: File | null) => {
-    setFormData(prev => ({ ...prev, [field]: file }));
-  };
 
   const nextStep = () => {
     if (currentStep < 4) {

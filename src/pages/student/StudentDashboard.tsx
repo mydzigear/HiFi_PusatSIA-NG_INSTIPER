@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, CreditCard, GraduationCap, Calendar, Clock, Bell, TrendingUp, Award, Sparkles } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -9,7 +8,7 @@ import { StatusBadge } from '../../components/StatusBadge';
 
 export function StudentDashboard() {
   const { user } = useAuth();
-  const { courses, invoices, notifications } = useApp();
+  const { invoices, notifications } = useApp();
   const student = user as Student;
 
   const todaySchedule = [

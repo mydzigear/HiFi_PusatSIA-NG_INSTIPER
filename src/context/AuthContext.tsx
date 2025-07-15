@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User, Student, Applicant } from '../types';
+import { User } from '../types';
 
 interface AuthContextType {
   user: User | null;
@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return false;
   };
 
-  const register = async (email: string, password: string, name: string, role: 'student' | 'applicant'): Promise<boolean> => {
+  const register = async (email: string, _password: string, name: string, role: 'student' | 'applicant'): Promise<boolean> => {
     setIsLoading(true);
     
     // Simulate API call

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Trash2, Search, Filter, BookOpen, Users, Calendar, Clock } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { Course } from '../../types';
 
 export function KRS() {
   const { courses } = useApp();

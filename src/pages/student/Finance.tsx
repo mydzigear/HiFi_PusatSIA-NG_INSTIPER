@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CreditCard, Clock, CheckCircle, AlertCircle, Download, ExternalLink, Calendar } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 

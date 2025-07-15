@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Search, Edit, Trash2, Calendar, Filter, Download, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Edit, Trash2, Calendar, Download, AlertCircle } from 'lucide-react';
 import { AcademicPeriod } from '../../types/admin';
 
 export function AcademicPeriodManagement() {

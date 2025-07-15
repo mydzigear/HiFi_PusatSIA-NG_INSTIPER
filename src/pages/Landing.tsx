@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, BookOpen, CreditCard, Calendar, Bell, FileText, Clock, MapPin, User, ChevronRight, Sparkles, TrendingUp, Leaf, TreePine, Sprout } from 'lucide-react';
+import { ArrowRight, Calendar, Bell, Sparkles, TrendingUp, Leaf, TreePine, Sprout, Users, Award, BookOpen, GraduationCap, Star, CheckCircle, Phone, Mail, MapPin as Location, Globe, Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 import { ParticleBackground } from '../components/ParticleBackground';
 
 export function Landing() {
@@ -8,101 +7,134 @@ export function Landing() {
   const announcements = [
     {
       id: '1',
-      title: 'Pembukaan Pendaftaran Mahasiswa Baru 2024/2025',
-      excerpt: 'Pendaftaran mahasiswa baru untuk tahun akademik 2024/2025 telah dibuka. Daftar sekarang dan raih masa depan cerah bersama INSTIPER.',
-      publishDate: '2024-01-20',
+      title: 'Pembukaan Pendaftaran Mahasiswa Baru 2025/2026',
+      excerpt: 'Pendaftaran mahasiswa baru untuk tahun akademik 2025/2026 telah dibuka. Daftar sekarang dan raih masa depan cerah bersama INSTIPER.',
+      publishDate: '2024-12-20',
       category: 'academic',
       featured: true,
       image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: '2',
-      title: 'Pengumuman Jadwal Ujian Tengah Semester',
-      excerpt: 'Jadwal ujian tengah semester genap 2023/2024 telah ditetapkan. Mahasiswa diharapkan mempersiapkan diri dengan baik.',
-      publishDate: '2024-01-18',
-      category: 'academic',
-      featured: false,
-      image: 'https://images.pexels.com/photos/159844/cellular-education-classroom-159844.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: '3',
-      title: 'Beasiswa Prestasi Akademik 2024',
+      title: 'Beasiswa Prestasi Akademik 2025',
       excerpt: 'Program beasiswa prestasi akademik untuk mahasiswa berprestasi telah dibuka. Syarat dan ketentuan dapat dilihat di pengumuman lengkap.',
-      publishDate: '2024-01-15',
+      publishDate: '2024-12-18',
       category: 'general',
       featured: true,
       image: 'https://images.pexels.com/photos/5940721/pexels-photo-5940721.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      id: '3',
+      title: 'Workshop Kewirausahaan Agribisnis',
+      excerpt: 'Workshop kewirausahaan untuk mahasiswa agribisnis dengan narasumber praktisi sukses di bidang pertanian.',
+      publishDate: '2024-12-15',
+      category: 'academic',
+      featured: false,
+      image: 'https://images.pexels.com/photos/159844/cellular-education-classroom-159844.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
   ];
 
-  const information = [
+  const studyPrograms = [
     {
       id: '1',
-      title: 'Panduan Penggunaan Sistem Akademik Online',
-      excerpt: 'Panduan lengkap untuk menggunakan sistem akademik online INSTIPER, mulai dari login hingga pengisian KRS.',
-      publishDate: '2024-01-19',
-      category: 'academic',
-      featured: true,
+      name: 'Agroteknologi',
+      level: 'S1',
+      accreditation: 'A',
+      description: 'Program studi yang mempelajari teknologi pertanian modern untuk meningkatkan produktivitas dan kualitas hasil pertanian.',
+      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=800',
       icon: '🌱'
     },
     {
       id: '2',
-      title: 'Fasilitas Laboratorium Terbaru',
-      excerpt: 'INSTIPER telah menambah fasilitas laboratorium modern untuk mendukung kegiatan praktikum mahasiswa.',
-      publishDate: '2024-01-17',
-      category: 'facility',
-      featured: false,
-      icon: '🔬'
+      name: 'Teknologi Pangan',
+      level: 'S1',
+      accreditation: 'A',
+      description: 'Mempelajari teknologi pengolahan, pengawetan, dan keamanan pangan untuk industri makanan modern.',
+      image: 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: '🍎'
     },
     {
       id: '3',
-      title: 'Prosedur Pembayaran UKT Online',
-      excerpt: 'Informasi lengkap mengenai tata cara pembayaran UKT melalui sistem online dan virtual account.',
-      publishDate: '2024-01-16',
-      category: 'general',
-      featured: true,
-      icon: '💳'
+      name: 'Agribisnis',
+      level: 'S1',
+      accreditation: 'B',
+      description: 'Program studi yang mengintegrasikan aspek bisnis dengan sektor pertanian untuk menciptakan wirausaha sukses.',
+      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: '💼'
+    },
+    {
+      id: '4',
+      name: 'Peternakan',
+      level: 'S1',
+      accreditation: 'B',
+      description: 'Mempelajari budidaya ternak, nutrisi, reproduksi, dan manajemen peternakan modern.',
+      image: 'https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: '🐄'
     }
   ];
 
-  const agenda = [
+  const facilities = [
     {
-      id: '1',
-      title: 'Seminar Nasional Teknologi Pertanian',
-      description: 'Seminar nasional dengan tema "Inovasi Teknologi untuk Pertanian Berkelanjutan"',
-      startDate: '2024-02-15',
-      endDate: '2024-02-15',
-      location: 'Auditorium INSTIPER',
-      category: 'seminar',
-      image: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800'
+      name: 'Laboratorium Teknologi Pangan',
+      description: 'Laboratorium modern dengan peralatan canggih untuk praktikum teknologi pengolahan pangan',
+      image: 'https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
-      id: '2',
-      title: 'Workshop Penulisan Skripsi',
-      description: 'Workshop untuk mahasiswa tingkat akhir tentang teknik penulisan skripsi yang baik dan benar',
-      startDate: '2024-02-20',
-      endDate: '2024-02-21',
-      location: 'Ruang Seminar Lt. 2',
-      category: 'workshop',
-      image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=800'
+      name: 'Greenhouse Modern',
+      description: 'Fasilitas greenhouse dengan teknologi climate control untuk penelitian tanaman',
+      image: 'https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
-      id: '3',
-      title: 'Ujian Tengah Semester',
-      description: 'Pelaksanaan ujian tengah semester genap tahun akademik 2023/2024',
-      startDate: '2024-03-01',
-      endDate: '2024-03-15',
-      location: 'Berbagai Ruang',
-      category: 'exam',
-      image: 'https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg?auto=compress&cs=tinysrgb&w=800'
+      name: 'Kandang Ternak Experimental',
+      description: 'Kandang modern untuk praktikum dan penelitian peternakan',
+      image: 'https://images.pexels.com/photos/1459505/pexels-photo-1459505.jpeg?auto=compress&cs=tinysrgb&w=800'
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Ahmad Rizki',
+      program: 'Agroteknologi 2020',
+      message: 'INSTIPER memberikan pendidikan berkualitas dengan fasilitas modern. Saya sangat terbantu dalam mengembangkan kemampuan di bidang pertanian.',
+      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      name: 'Siti Nurhaliza',
+      program: 'Teknologi Pangan 2019',
+      message: 'Dosen-dosen yang berpengalaman dan kurikulum yang up-to-date membuat saya siap menghadapi dunia kerja.',
+      avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      name: 'Budi Santoso',
+      program: 'Agribisnis 2018',
+      message: 'Setelah lulus, saya berhasil membangun usaha agribisnis sendiri berkat ilmu yang didapat di INSTIPER.',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150'
     }
   ];
 
   const stats = [
     { number: '2,500+', label: 'Mahasiswa Aktif', icon: '🌿' },
     { number: '15+', label: 'Program Studi', icon: '🎓' },
-    { number: '99.9%', label: 'Uptime Sistem', icon: '⚡' },
-    { number: '24/7', label: 'Akses Online', icon: '🌐' }
+    { number: '95%', label: 'Tingkat Kelulusan', icon: '📊' },
+    { number: '85%', label: 'Tingkat Kerja Alumni', icon: '💼' }
+  ];
+
+  const achievements = [
+    {
+      title: 'Akreditasi A',
+      description: 'Program Studi Agroteknologi dan Teknologi Pangan terakreditasi A',
+      icon: '🏆'
+    },
+    {
+      title: 'ISO 9001:2015',
+      description: 'Sertifikasi manajemen mutu internasional',
+      icon: '⭐'
+    },
+    {
+      title: 'Top 100 Perguruan Tinggi',
+      description: 'Masuk dalam ranking 100 besar perguruan tinggi di Indonesia',
+      icon: '🥇'
+    }
   ];
 
   const formatDate = (dateString: string) => {
@@ -118,9 +150,15 @@ export function Landing() {
       case 'academic': return 'bg-emerald-100 text-emerald-800';
       case 'general': return 'bg-green-100 text-green-800';
       case 'urgent': return 'bg-red-100 text-red-800';
-      case 'seminar': return 'bg-purple-100 text-purple-800';
-      case 'workshop': return 'bg-orange-100 text-orange-800';
-      case 'exam': return 'bg-red-100 text-red-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getAccreditationColor = (accreditation: string) => {
+    switch (accreditation) {
+      case 'A': return 'bg-green-100 text-green-800';
+      case 'B': return 'bg-blue-100 text-blue-800';
+      case 'C': return 'bg-yellow-100 text-yellow-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -141,17 +179,26 @@ export function Landing() {
                   className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain float-animation"
                 />
                 <div>
-                  <h1 className="text-sm sm:text-lg md:text-xl font-bold text-gray-900">Portal Mahasiswa</h1>
+                  <h1 className="text-sm sm:text-lg md:text-xl font-bold text-gray-900">INSTIPER</h1>
                   <p className="text-xs text-gray-700 font-medium">Institut Pertanian STIPER</p>
                 </div>
               </div>
+              
+              {/* Navigation Menu - Hidden on mobile */}
+              <nav className="hidden lg:flex items-center space-x-8">
+                <a href="#beranda" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Beranda</a>
+                <a href="#program-studi" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Program Studi</a>
+                <a href="#fasilitas" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Fasilitas</a>
+                <a href="#tentang" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
+                <a href="#kontak" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
+              </nav>
               
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <Link to="/login" className="btn-secondary text-xs sm:text-sm px-3 sm:px-4 py-2">
                   Masuk
                 </Link>
                 <Link to="/register" className="btn-primary text-xs sm:text-sm px-3 sm:px-4 py-2">
-                  Daftar Sekarang
+                  Daftar PMB
                 </Link>
               </div>
             </div>
@@ -159,35 +206,36 @@ export function Landing() {
         </header>
 
         {/* Hero Section */}
-        <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
+        <section id="beranda" className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
           <div className="max-w-7xl mx-auto relative">
             <div className="text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-100 to-green-100 px-4 py-2 rounded-full mb-6">
                 <Leaf className="w-4 h-4 text-emerald-600" />
-                <span className="text-sm font-medium text-gray-800">Portal Admisi & Mahasiswa</span>
+                <span className="text-sm font-medium text-gray-800">Penerimaan Mahasiswa Baru 2025/2026</span>
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                Masa Depan Pertanian
+                Wujudkan Impian Menjadi
                 <span className="block bg-gradient-to-r from-emerald-300 to-green-300 bg-clip-text text-transparent">
-                  Dimulai dari Sini
+                  Ahli Pertanian Profesional
                 </span>
               </h1>
               
-              <p className="text-sm sm:text-lg md:text-xl text-emerald-100 mb-6 sm:mb-8 leading-relaxed font-medium max-w-3xl mx-auto">
-                Platform digital terdepan untuk mahasiswa pertanian dan kehutanan modern. Akses semua kebutuhan akademik, informasi terkini, dan layanan kampus dalam satu tempat yang mudah dan intuitif.
+              <p className="text-sm sm:text-lg md:text-xl text-emerald-100 mb-6 sm:mb-8 leading-relaxed font-medium max-w-4xl mx-auto">
+                Institut Pertanian STIPER Yogyakarta - Perguruan tinggi pertanian terdepan yang menghasilkan lulusan berkualitas, 
+                siap menghadapi tantangan industri pertanian modern dengan teknologi terkini dan pendekatan berkelanjutan.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
                 <Link to="/register" className="btn-primary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-center gap-2 group">
                   <Sprout className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Mulai Pendaftaran
+                  Daftar Sekarang
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/login" className="btn-secondary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-center gap-2">
+                <a href="#program-studi" className="btn-secondary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-center gap-2">
                   <TreePine className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Portal Mahasiswa
-                </Link>
+                  Lihat Program Studi
+                </a>
               </div>
 
               {/* Stats */}
@@ -204,6 +252,169 @@ export function Landing() {
           </div>
         </section>
 
+        {/* Program Studi Section */}
+        <section id="program-studi" className="py-12 sm:py-16 md:py-20 bg-white/90">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <GraduationCap className="w-6 h-6 text-emerald-500" />
+                <span className="text-sm font-medium text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Program Unggulan</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Program Studi Berkualitas</h2>
+              <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
+                Pilih program studi yang sesuai dengan minat dan bakat Anda. Semua program studi kami telah terakreditasi 
+                dan didukung oleh dosen berpengalaman serta fasilitas modern.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {studyPrograms.map((program) => (
+                <div key={program.id} className="card hover:scale-105 transition-all duration-300 group overflow-hidden">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <img 
+                      src={program.image} 
+                      alt={program.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      <span className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-gray-800">
+                        {program.level}
+                      </span>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getAccreditationColor(program.accreditation)}`}>
+                        Akreditasi {program.accreditation}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-3 right-3 text-3xl bg-white/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
+                      {program.icon}
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                    {program.name}
+                  </h3>
+                  
+                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">
+                    {program.description}
+                  </p>
+                  
+                  <div className="mt-auto">
+                    <Link to="/register" className="text-emerald-600 hover:text-emerald-700 text-sm font-medium flex items-center gap-1 group">
+                      Pelajari Lebih Lanjut
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section className="py-12 sm:py-16 md:py-20 bg-emerald-50/50">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Award className="w-6 h-6 text-yellow-500" />
+                <span className="text-sm font-medium text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">Prestasi</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pencapaian & Pengakuan</h2>
+              <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
+                INSTIPER telah meraih berbagai prestasi dan pengakuan sebagai bukti komitmen kami dalam memberikan pendidikan berkualitas tinggi.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+              {achievements.map((achievement, index) => (
+                <div key={index} className="card text-center hover:scale-105 transition-all duration-300">
+                  <div className="text-4xl mb-4">{achievement.icon}</div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{achievement.title}</h3>
+                  <p className="text-gray-700 text-sm">{achievement.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Facilities Section */}
+        <section id="fasilitas" className="py-12 sm:py-16 md:py-20 bg-white/90">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <BookOpen className="w-6 h-6 text-blue-500" />
+                <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">Fasilitas Modern</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Fasilitas Pendukung Pembelajaran</h2>
+              <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
+                Fasilitas modern dan lengkap untuk mendukung proses pembelajaran yang optimal dan pengembangan keterampilan praktis mahasiswa.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+              {facilities.map((facility, index) => (
+                <div key={index} className="card hover:scale-105 transition-all duration-300 group overflow-hidden">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <img 
+                      src={facility.image} 
+                      alt={facility.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {facility.name}
+                  </h3>
+                  
+                  <p className="text-gray-700 text-sm">
+                    {facility.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-12 sm:py-16 md:py-20 bg-emerald-50/50">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Users className="w-6 h-6 text-purple-500" />
+                <span className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">Testimoni</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kata Alumni</h2>
+              <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
+                Dengarkan pengalaman dan kesuksesan alumni INSTIPER yang telah berkarir di berbagai bidang pertanian dan industri terkait.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="card hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-600">{testimonial.program}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-700 text-sm italic">"{testimonial.message}"</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Announcements Section */}
         <section className="py-12 sm:py-16 md:py-20 bg-white/90">
           <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
@@ -211,19 +422,15 @@ export function Landing() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <Bell className="w-5 h-5 text-orange-500" />
-                  <span className="text-sm font-medium text-orange-600 bg-orange-100 px-3 py-1 rounded-full">Hot News</span>
+                  <span className="text-sm font-medium text-orange-600 bg-orange-100 px-3 py-1 rounded-full">Terbaru</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Pengumuman Terbaru</h2>
-                <p className="text-gray-700 text-sm sm:text-base">Jangan sampai ketinggalan info penting! 🔥</p>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Pengumuman & Berita</h2>
+                <p className="text-gray-700 text-sm sm:text-base">Informasi terkini seputar INSTIPER dan dunia pendidikan pertanian</p>
               </div>
-              <Link to="/announcements" className="flex items-center gap-2 text-gray-800 hover:text-gray-900 font-medium text-sm sm:text-base group">
-                Lihat Semua
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {announcements.map((announcement, index) => (
+              {announcements.map((announcement) => (
                 <div key={announcement.id} className="card hover:scale-105 transition-all duration-300 group overflow-hidden">
                   <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                     <img 
@@ -257,7 +464,7 @@ export function Landing() {
                       <Calendar className="w-3 h-3" />
                       <span>{formatDate(announcement.publishDate)}</span>
                     </div>
-                    <Link to={`/announcements/${announcement.id}`} className="text-gray-800 hover:text-gray-900 text-sm font-medium flex items-center gap-1 group">
+                    <Link to={`/announcements/${announcement.id}`} className="text-emerald-600 hover:text-emerald-700 text-sm font-medium flex items-center gap-1 group">
                       Baca
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -268,140 +475,61 @@ export function Landing() {
           </div>
         </section>
 
-        {/* Information Section */}
-        <section className="py-12 sm:py-16 md:py-20 bg-emerald-50/50">
+        {/* About Section */}
+        <section id="tentang" className="py-12 sm:py-16 md:py-20 bg-emerald-50/50">
           <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8 sm:mb-12">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <FileText className="w-5 h-5 text-emerald-500" />
-                  <span className="text-sm font-medium text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Info Center</span>
+                <div className="flex items-center gap-2 mb-4">
+                  <TreePine className="w-6 h-6 text-emerald-500" />
+                  <span className="text-sm font-medium text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Tentang Kami</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Informasi Kampus</h2>
-                <p className="text-gray-700 text-sm sm:text-base">Panduan lengkap untuk kehidupan kampus yang lebih mudah 📖</p>
-              </div>
-              <Link to="/information" className="flex items-center gap-2 text-gray-800 hover:text-gray-900 font-medium text-sm sm:text-base group">
-                Lihat Semua
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {information.map((info) => (
-                <div key={info.id} className="card hover:scale-105 transition-all duration-300 group">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="text-3xl">{info.icon}</div>
-                    <div className="flex-1">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(info.category)}`}>
-                        {info.category === 'academic' ? 'Akademik' : 
-                         info.category === 'facility' ? 'Fasilitas' : 'Umum'}
-                      </span>
-                      {info.featured && (
-                        <span className="ml-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
-                          Trending
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">
-                    {info.title}
-                  </h3>
-                  
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">
-                    {info.excerpt}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  Institut Pertanian STIPER Yogyakarta
+                </h2>
+                <div className="space-y-4 text-gray-700">
+                  <p>
+                    Institut Pertanian STIPER Yogyakarta adalah perguruan tinggi swasta yang berfokus pada pengembangan 
+                    ilmu pertanian dan teknologi pangan. Didirikan dengan visi menjadi institusi pendidikan tinggi 
+                    pertanian terdepan di Indonesia.
                   </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <FileText className="w-3 h-3" />
-                      <span>{formatDate(info.publishDate)}</span>
-                    </div>
-                    <Link to={`/information/${info.id}`} className="text-gray-800 hover:text-gray-900 text-sm font-medium flex items-center gap-1 group">
-                      Baca
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Agenda Section */}
-        <section className="py-12 sm:py-16 md:py-20 bg-white/90">
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8 sm:mb-12">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-5 h-5 text-purple-500" />
-                  <span className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">Events</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Agenda Kegiatan</h2>
-                <p className="text-gray-700 text-sm sm:text-base">Jangan sampai terlewat acara seru di kampus! 🎉</p>
-              </div>
-              <Link to="/agenda" className="flex items-center gap-2 text-gray-800 hover:text-gray-900 font-medium text-sm sm:text-base group">
-                Lihat Semua
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {agenda.map((event) => (
-                <div key={event.id} className="card hover:scale-105 transition-all duration-300 group overflow-hidden">
-                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                    <img 
-                      src={event.image} 
-                      alt={event.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(event.category)}`}>
-                        {event.category === 'seminar' ? 'Seminar' :
-                         event.category === 'workshop' ? 'Workshop' :
-                         event.category === 'exam' ? 'Ujian' : 'Acara'}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg">
-                      <div className="flex items-center gap-1 text-xs text-gray-700">
-                        <Clock className="w-3 h-3" />
-                        <span>{formatDate(event.startDate)}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">
-                    {event.title}
-                  </h3>
-                  
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-2">
-                    {event.description}
+                  <p>
+                    Dengan dukungan dosen berpengalaman, fasilitas modern, dan kurikulum yang selalu update mengikuti 
+                    perkembangan teknologi, kami berkomitmen menghasilkan lulusan yang kompeten dan siap menghadapi 
+                    tantangan industri pertanian masa depan.
                   </p>
-                  
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <Calendar className="w-3 h-3" />
-                      <span>
-                        {event.startDate === event.endDate 
-                          ? formatDate(event.startDate)
-                          : `${formatDate(event.startDate)} - ${formatDate(event.endDate)}`
-                        }
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <MapPin className="w-3 h-3" />
-                      <span>{event.location}</span>
-                    </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-6 mt-8">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-emerald-600">25+</div>
+                    <div className="text-sm text-gray-600">Tahun Pengalaman</div>
                   </div>
-                  
-                  <div className="mt-4 pt-4 border-t border-emerald-100">
-                    <Link to={`/agenda/${event.id}`} className="text-gray-800 hover:text-gray-900 text-sm font-medium flex items-center gap-1 group">
-                      Lihat Detail
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-emerald-600">5000+</div>
+                    <div className="text-sm text-gray-600">Alumni Sukses</div>
                   </div>
                 </div>
-              ))}
+              </div>
+              
+              <div className="relative">
+                <img 
+                  src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="INSTIPER Campus"
+                  className="rounded-2xl shadow-2xl"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-emerald-600" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">Terakreditasi</div>
+                      <div className="text-sm text-gray-600">BAN-PT</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -411,15 +539,15 @@ export function Landing() {
           <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center relative">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-100 to-green-100 px-4 py-2 rounded-full mb-6">
               <TrendingUp className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-medium text-gray-800">Join the Future</span>
+              <span className="text-sm font-medium text-gray-800">Bergabung Sekarang</span>
             </div>
             
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Siap Memulai Perjalanan Akademik Anda?
             </h2>
             <p className="text-sm sm:text-lg text-emerald-100 mb-6 sm:mb-8 max-w-2xl mx-auto font-medium">
-              Bergabunglah dengan ribuan mahasiswa yang telah merasakan kemudahan sistem kami. 
-              Masa depan pertanian dan kehutanan dimulai dari sini! 🚀
+              Bergabunglah dengan ribuan mahasiswa yang telah merasakan pendidikan berkualitas di INSTIPER. 
+              Masa depan pertanian Indonesia dimulai dari sini! 🚀
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link to="/register" className="btn-primary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center gap-2 group">
@@ -427,10 +555,115 @@ export function Landing() {
                 Daftar Sebagai Calon Mahasiswa
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/login" className="btn-secondary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center gap-2">
-                <TreePine className="w-4 h-4 sm:w-5 sm:h-5" />
-                Portal Mahasiswa Aktif
-              </Link>
+              <a href="#kontak" className="btn-secondary text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                Hubungi Kami
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="kontak" className="py-12 sm:py-16 md:py-20 bg-white/90">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Location className="w-6 h-6 text-blue-500" />
+                <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">Kontak</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
+              <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
+                Kami siap membantu Anda dengan informasi lebih lanjut tentang program studi dan proses pendaftaran.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <div className="card">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
+                  <form className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                        <input type="text" className="input-field" placeholder="Masukkan nama lengkap" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" className="input-field" placeholder="Masukkan email" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Subjek</label>
+                      <input type="text" className="input-field" placeholder="Masukkan subjek" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
+                      <textarea className="input-field" rows={4} placeholder="Tulis pesan Anda"></textarea>
+                    </div>
+                    <button type="submit" className="btn-primary w-full">
+                      Kirim Pesan
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="card">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Informasi Kontak</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Location className="w-5 h-5 text-emerald-600 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-900">Alamat</p>
+                        <p className="text-sm text-gray-600">
+                          Jl. Petung No. 2, Papringan<br />
+                          Caturtunggal, Depok, Sleman<br />
+                          Yogyakarta 55281
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Phone className="w-5 h-5 text-emerald-600 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-900">Telepon</p>
+                        <p className="text-sm text-gray-600">(0274) 2901011</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Mail className="w-5 h-5 text-emerald-600 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-900">Email</p>
+                        <p className="text-sm text-gray-600">info@instiperjogja.ac.id</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Globe className="w-5 h-5 text-emerald-600 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-900">Website</p>
+                        <p className="text-sm text-gray-600">www.instiperjogja.ac.id</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Ikuti Kami</h3>
+                  <div className="flex gap-3">
+                    <a href="#" className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors">
+                      <Facebook className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="w-10 h-10 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-200 transition-colors">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center hover:bg-red-200 transition-colors">
+                      <Youtube className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors">
+                      <Twitter className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -452,34 +685,39 @@ export function Landing() {
                   </div>
                 </div>
                 <p className="text-sm sm:text-base text-gray-700 mb-4 font-medium">
-                  Platform digital terdepan yang menghubungkan seluruh civitas akademika 
-                  dalam satu ekosistem pendidikan pertanian dan kehutanan yang modern dan efisien.
+                  Perguruan tinggi pertanian terdepan yang menghasilkan lulusan berkualitas, 
+                  siap menghadapi tantangan industri pertanian modern dengan teknologi terkini.
                 </p>
+                <div className="flex gap-3">
+                  <a href="#" className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors">
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                  <a href="#" className="w-8 h-8 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-200 transition-colors">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a href="#" className="w-8 h-8 bg-red-100 text-red-600 rounded-lg flex items-center justify-center hover:bg-red-200 transition-colors">
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
 
               <div>
-                <h4 className="text-gray-900 font-semibold mb-4 text-sm sm:text-base">Portal</h4>
+                <h4 className="text-gray-900 font-semibold mb-4 text-sm sm:text-base">Program Studi</h4>
                 <ul className="space-y-2 text-gray-700 text-sm sm:text-base">
-                  <li><Link to="/register" className="hover:text-gray-900 transition-colors font-medium">Pendaftaran</Link></li>
-                  <li><Link to="/login" className="hover:text-gray-900 transition-colors font-medium">Portal Mahasiswa</Link></li>
-                  <li><Link to="/login" className="hover:text-gray-900 transition-colors font-medium">Portal Admin</Link></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Agroteknologi</a></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Teknologi Pangan</a></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Agribisnis</a></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Peternakan</a></li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="text-gray-900 font-semibold mb-4 text-sm sm:text-base">Kontak</h4>
-                <ul className="space-y-2 text-gray-700 text-xs sm:text-sm">
-                  <li>Jl. Petung No. 2, Papringan</li>
-                  <li>Caturtunggal, Depok, Sleman</li>
-                  <li>Yogyakarta 55281</li>
-                  <li className="pt-2">
-                    <strong className="text-gray-900">Email:</strong><br />
-                    info@instiperjogja.ac.id
-                  </li>
-                  <li>
-                    <strong className="text-gray-900">Telp:</strong><br />
-                    (0274) 2901011
-                  </li>
+                <h4 className="text-gray-900 font-semibold mb-4 text-sm sm:text-base">Tautan Cepat</h4>
+                <ul className="space-y-2 text-gray-700 text-sm sm:text-base">
+                  <li><Link to="/register" className="hover:text-gray-900 transition-colors font-medium">Pendaftaran PMB</Link></li>
+                  <li><Link to="/login" className="hover:text-gray-900 transition-colors font-medium">Portal Mahasiswa</Link></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Beasiswa</a></li>
+                  <li><a href="#" className="hover:text-gray-900 transition-colors font-medium">Karir</a></li>
                 </ul>
               </div>
             </div>
@@ -490,9 +728,9 @@ export function Landing() {
                 <p>Pusat-SIA - Sistem Informasi Akademik Terintegrasi</p>
               </div>
               <div className="flex space-x-4 sm:space-x-6 text-xs sm:text-sm text-gray-700">
-                <Link to="/privacy" className="hover:text-gray-900 transition-colors font-medium">Kebijakan Privasi</Link>
-                <Link to="/terms" className="hover:text-gray-900 transition-colors font-medium">Syarat & Ketentuan</Link>
-                <Link to="/help" className="hover:text-gray-900 transition-colors font-medium">Bantuan</Link>
+                <a href="#" className="hover:text-gray-900 transition-colors font-medium">Kebijakan Privasi</a>
+                <a href="#" className="hover:text-gray-900 transition-colors font-medium">Syarat & Ketentuan</a>
+                <a href="#" className="hover:text-gray-900 transition-colors font-medium">Bantuan</a>
               </div>
             </div>
           </div>

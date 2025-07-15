@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Plus, Search, Filter, Edit, Trash2, DollarSign, Users, Calendar, Download, Upload } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Search, Filter, Edit, Trash2, DollarSign, Users, Calendar, Download, Upload, Settings } from 'lucide-react';
+import { DynamicFormModal } from '../../components/admin/DynamicFormModal';
+import { formatCurrencyShort } from '../../lib/utils';
 
 interface BillingRule {
   id: string;
@@ -23,7 +25,8 @@ interface BillingComponent {
 export function BillingEngine() {
   const [activeTab, setActiveTab] = useState<'rules' | 'generate' | 'history'>('rules');
   const [searchTerm, setSearchTerm] = useState('');
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingRule, setEditingRule] = useState<any>(null);
 
   // Mock data
   const billingRules: BillingRule[] = [
@@ -80,13 +83,6 @@ export function BillingEngine() {
     }
   ];
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-    }).format(amount);
-  };
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('id-ID', {
@@ -95,6 +91,71 @@ export function BillingEngine() {
       year: 'numeric'
     });
   };
+
+  const openModal = (rule?: any) => {
+    setEditingRule(rule || null);
+    setIsModalOpen(true);
+  };
+
+  const handleSave = (data: any) => {
+    console.log('Saving billing rule:', data);
+    // Implementation would save to backend
+  };
+
+  const getRuleFormFields = () => [
+    { name: 'name', label: 'Nama Aturan', type: 'text' as const, required: true, placeholder: 'Masukkan nama aturan' },
+    { 
+      name: 'paymentType', 
+      label: 'Jenis Pembayaran', 
+      type: 'select' as const, 
+      required: true,
+      options: [
+        { value: 'UKT', label: 'UKT' },
+        { value: 'Herregistrasi', label: 'Herregistrasi' },
+        { value: 'Pendaftaran', label: 'Pendaftaran' },
+        { value: 'Wisuda', label: 'Wisuda' },
+        { value: 'KKN', label: 'KKN' },
+        { value: 'Skripsi', label: 'Skripsi' }
+      ]
+    },
+    { name: 'academicYear', label: 'Tahun Akademik', type: 'text' as const, required: true, placeholder: '2024/2025' },
+    { 
+      name: 'program', 
+      label: 'Program Studi', 
+      type: 'select' as const, 
+      required: true,
+      options: [
+        { value: 'Semua Program', label: 'Semua Program' },
+        { value: 'Agroteknologi', label: 'Agroteknologi' },
+        { value: 'Teknologi Pangan', label: 'Teknologi Pangan' },
+        { value: 'Agribisnis', label: 'Agribisnis' },
+        { value: 'Peternakan', label: 'Peternakan' }
+      ]
+    },
+    { 
+      name: 'entryPath', 
+      label: 'Jalur Masuk', 
+      type: 'select' as const, 
+      required: true,
+      options: [
+        { value: 'Semua Jalur', label: 'Semua Jalur' },
+        { value: 'Reguler', label: 'Reguler' },
+        { value: 'Mandiri', label: 'Mandiri' },
+        { value: 'Beasiswa', label: 'Beasiswa' }
+      ]
+    },
+    { name: 'amount', label: 'Total Tarif', type: 'currency' as const, required: true, placeholder: 'Masukkan nominal' },
+    { 
+      name: 'status', 
+      label: 'Status', 
+      type: 'select' as const, 
+      required: true,
+      options: [
+        { value: 'active', label: 'Aktif' },
+        { value: 'inactive', label: 'Nonaktif' }
+      ]
+    }
+  ];
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -111,7 +172,7 @@ export function BillingEngine() {
             Import Data
           </button>
           <button 
-            onClick={() => setShowCreateModal(true)}
+            onClick={() => openModal()}
             className="btn-primary flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
@@ -152,7 +213,7 @@ export function BillingEngine() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-600 text-sm">Total Nilai Tagihan</p>
-              <p className="text-2xl font-bold text-gray-900">{formatCurrency(6250000000)}</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrencyShort(6250000000)}</p>
             </div>
             <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
               <Calendar className="w-6 h-6 text-orange-600" />
@@ -273,11 +334,11 @@ export function BillingEngine() {
                           <p className="text-sm text-gray-500">{rule.entryPath}</p>
                         </div>
                       </td>
-                      <td className="py-3 px-4">
-                        <span className="font-semibold text-gray-900">
-                          {formatCurrency(rule.amount)}
-                        </span>
-                      </td>
+                       <td className="py-3 px-4">
+                         <span className="font-semibold text-gray-900">
+                           {formatCurrencyShort(rule.amount)}
+                         </span>
+                       </td>
                       <td className="py-3 px-4">
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                           rule.status === 'active' 
@@ -288,14 +349,20 @@ export function BillingEngine() {
                         </span>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="flex items-center gap-2">
-                          <button className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg">
-                            <Edit className="w-4 h-4" />
-                          </button>
-                          <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                         <div className="flex items-center gap-2">
+                           <button 
+                             onClick={() => openModal(rule)}
+                             className="p-2 text-primary-600 hover:bg-primary-50 rounded-lg"
+                           >
+                             <Edit className="w-4 h-4" />
+                           </button>
+                           <button className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg">
+                             <Settings className="w-4 h-4" />
+                           </button>
+                           <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
+                             <Trash2 className="w-4 h-4" />
+                           </button>
+                         </div>
                       </td>
                     </tr>
                   ))}
@@ -400,7 +467,7 @@ export function BillingEngine() {
                   <h4 className="font-medium text-blue-800 mb-2">Preview Generate</h4>
                   <div className="text-blue-700 text-sm space-y-1">
                     <p>Estimasi mahasiswa: <strong>1,250 mahasiswa</strong></p>
-                    <p>Total nilai tagihan: <strong>{formatCurrency(6250000000)}</strong></p>
+                    <p>Total nilai tagihan: <strong>{formatCurrencyShort(6250000000)}</strong></p>
                     <p>Format nomor tagihan: <strong>202401-UKT-[NIM]</strong></p>
                   </div>
                 </div>
@@ -451,11 +518,11 @@ export function BillingEngine() {
                           {batch.totalStudents.toLocaleString()}
                         </span>
                       </td>
-                      <td className="py-3 px-4">
-                        <span className="font-semibold text-gray-900">
-                          {formatCurrency(batch.totalAmount)}
-                        </span>
-                      </td>
+                       <td className="py-3 px-4">
+                         <span className="font-semibold text-gray-900">
+                           {formatCurrencyShort(batch.totalAmount)}
+                         </span>
+                       </td>
                       <td className="py-3 px-4">
                         <span className="text-gray-600">
                           {formatDate(batch.generatedDate)}
@@ -480,6 +547,17 @@ export function BillingEngine() {
           </div>
         </div>
       )}
+
+      {/* Dynamic Form Modal */}
+      <DynamicFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleSave}
+        title={editingRule ? 'Edit Aturan Tarif' : 'Buat Aturan Tarif Baru'}
+        fields={getRuleFormFields()}
+        initialData={editingRule}
+        isEdit={editingRule !== null}
+      />
     </div>
   );
 }

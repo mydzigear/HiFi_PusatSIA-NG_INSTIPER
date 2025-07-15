@@ -27,7 +27,6 @@ import { UserManagement } from './pages/admin/UserManagement';
 import { PaymentSettings } from './pages/admin/PaymentSettings';
 import { BillingEngine } from './pages/admin/BillingEngine';
 import { Reports } from './pages/admin/Reports';
-import { StudentPaymentReport } from './pages/admin/StudentPaymentReport';
 
 // New Admin Pages
 import { StudyProgramManagement } from './pages/admin/StudyProgramManagement';
@@ -41,7 +40,11 @@ import { AnnouncementManagement } from './pages/admin/AnnouncementManagement';
 import { InformationManagement } from './pages/admin/InformationManagement';
 import { AgendaManagement } from './pages/admin/AgendaManagement';
 
-// Protected Route Component
+// Financial Management Pages
+import { TariffSettings } from './pages/admin/TariffSettings';
+import { DispensationSettings } from './pages/admin/DispensationSettings';
+import { BillGeneration } from './pages/admin/BillGeneration';
+
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   
@@ -52,7 +55,6 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-// Dashboard Router Component
 function DashboardRouter() {
   const { user } = useAuth();
 
@@ -242,10 +244,26 @@ function AppRoutes() {
           </DashboardLayout>
         </ProtectedRoute>
       } />
-      <Route path="/admin/student-payment-report" element={
+      
+      {/* Admin - Financial Management & Rule Builder */}
+      <Route path="/admin/tariff-settings" element={
         <ProtectedRoute>
           <DashboardLayout>
-            <StudentPaymentReport />
+            <TariffSettings />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/dispensation-settings" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <DispensationSettings />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/bill-generation" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <BillGeneration />
           </DashboardLayout>
         </ProtectedRoute>
       } />
